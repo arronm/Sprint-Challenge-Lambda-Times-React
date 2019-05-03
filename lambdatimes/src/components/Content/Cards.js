@@ -12,9 +12,12 @@ const Cards = props => {
   )
 }
 
-// TODO: Update our object shape here later
 Cards.propTypes = {
-  cards: PropTypes.arrayOf(PropTypes.object),
+  cards: PropTypes.arrayOf(PropTypes.shape({
+    headline: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+    img: PropTypes.string.isRequired,
+  })),
 }
 
 export default Cards;
