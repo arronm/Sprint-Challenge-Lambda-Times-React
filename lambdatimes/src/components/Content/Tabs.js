@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Tab from './Tab';
 
 class Tabs extends Component {
@@ -37,5 +38,8 @@ class Tabs extends Component {
   }
 }
 
-// Make sure to use PropTypes to validate your types!
+Tab.propTypes = {
+  tabs: PropTypes.arrayOf(PropTypes.string),
+}
+
 export default Tabs;
