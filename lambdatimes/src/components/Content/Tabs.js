@@ -1,16 +1,41 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Tab from './Tab';
-const Tabs = props => {
-  return (
-    <div className="tabs">
-      <div className="topics">
-        <span className="title">TRENDING TOPICS:</span>
-        {/* map over the tabs provided on your props, create a new Tab component for each one.
-            give the tab component a `selectTabHandler`, the `selectedTab`, and the `tab` itself as props*/}
+
+class Tabs extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedTab: '',
+    }
+  }
+
+  selectTabHandler = (tab) => {
+    console.log(tab);
+    this.setState({
+      ...this.state,
+      selectedTab: tab,
+    });
+  }
+
+  render() {
+    return (
+      <div className="tabs">
+        <div className="topics">
+          <span className="title">TRENDING TOPICS:</span>
+          {
+            this.props.tabs.map(tab => (
+              <Tab
+                tab={tab}
+                selectTabHandler={this.selectTabHandler}
+                selectedTab={this.state.selectedTab}
+              />
+            ))
+          }
+        </div>
       </div>
-    </div>
-  );
-};
+    )
+  }
+}
 
 // Make sure to use PropTypes to validate your types!
 export default Tabs;
